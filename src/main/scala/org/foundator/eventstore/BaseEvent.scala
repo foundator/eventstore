@@ -1,0 +1,15 @@
+package org.foundator.eventstore
+
+trait BaseEvent {
+    type Version <: BaseEvent.BaseVersion
+    type Current
+    // def apply(...) : Current
+    def migrate(event : Version) : Current
+    object As {
+        def unapply(event : Version) = Some(migrate(event))
+    }
+}
+
+object BaseEvent {
+    abstract class BaseVersion
+}
