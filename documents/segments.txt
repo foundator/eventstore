@@ -1,0 +1,5 @@
+- Segments use a monotonically increasing counter to generate their ID.
+
+- A segment may be the result of combining other segments. In that case, the smallest ID is used as the new ID.
+
+- Segment 10027 would reside at: segments/000/010/027.jsons
