@@ -1,8 +1,9 @@
 package org.foundator.eventstore
 
 trait BaseEvent {
-    type Version <: BaseEvent.BaseVersion
-    type Current
+    final type BaseVersion = BaseEvent.BaseVersion
+    type Version <: BaseVersion
+    type Current <: Version
     // def apply(...) : Current
     def migrate(event : Version) : Current
     object As {
