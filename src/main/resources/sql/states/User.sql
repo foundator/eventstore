@@ -11,6 +11,8 @@ create function "User_CreateUser"() returns trigger as $$ begin
     return new;
 end $$ language 'plpgsql';
 
-create trigger "User_CreateUser" after insert or update of id on events."Event" for each row execute procedure "User_CreateUser"();
+create trigger "User_CreateUser" after insert or update of id on events."Event"
+for each row when (new.eventName = 'CreateUser')
+execute procedure "User_CreateUser"();
 
 commit;
